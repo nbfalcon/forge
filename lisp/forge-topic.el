@@ -636,7 +636,7 @@ Return a value between 0 and 1."
 (defun forge--fontify-markdown (text)
   (with-temp-buffer
     (delay-mode-hooks
-      (gfm-mode))
+      (forge-post-mode))
     (insert text)
     (font-lock-ensure)
     (when forge-post-fill-region
