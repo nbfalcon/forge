@@ -115,7 +115,13 @@
     (define-key map [remap evil-quit]                    'forge-post-cancel)
     map))
 
-(define-derived-mode forge-post-mode gfm-mode "Forge-Post" "")
+(defface forge-post-mention-face '((t :foreground "LightBlue"))
+  "Face used for @mentions in forge posts."
+  :group 'forge-post)
+
+(define-derived-mode forge-post-mode gfm-mode "Forge-Post"
+  "`major-mode' for forge posts."
+  (font-lock-add-keywords nil '(("@[[:alnum:]-]+" . 'forge-post-mention-face))))
 
 (defvar-local forge--buffer-base-branch nil)
 (defvar-local forge--buffer-head-branch nil)
